@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 625926429837455715}
   - component: {fileID: 625926429837455644}
   m_Layer: 0
-  m_Name: SpawnPositions
+  m_Name: MobsSpawnPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,12 +106,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2b3724bad2f1c42bedf1768b7f2b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mobPrefab: {fileID: 5770431886264135879, guid: 0da651b4fd6ebd34d88eaf69b29b8c37,
+  _mobCacPrefab: {fileID: 5770431886264135879, guid: 0da651b4fd6ebd34d88eaf69b29b8c37,
+    type: 3}
+  _mobDistPrefab: {fileID: 6078182815996077793, guid: a9a27668ee94a484f8044208e0f93250,
     type: 3}
   _nbMobToSpawn: 5
   _nbMobToAdd: 3
   _timeToSpawn: 2
   _timeToSub: 1
+  _ratioSpawnCac: 100
+  _deltaSpawn: 20
   _actualZone: 0
 --- !u!1 &625926430034013813
 GameObject:

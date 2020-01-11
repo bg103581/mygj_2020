@@ -22,7 +22,7 @@ public class MobDistanceMovement : MonoBehaviour
     // Use this for initialization
     void Start() {
         //Initializes the agent with the very same script that is attached to the game object.
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player")?.transform;
         agent = GetComponent<NavMeshAgent>();
         _mob = GetComponent<MobDistance>();
     }

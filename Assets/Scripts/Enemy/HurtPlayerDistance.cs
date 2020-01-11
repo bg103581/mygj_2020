@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HurtPlayer : MonoBehaviour
+public class HurtPlayerDistance : MonoBehaviour
 {
     [SerializeField]
     private bool _isTouchingPlayer;
 
-    private MobCAC _mob;
+    private MobDistance _mob;
     // Start is called before the first frame update
-    void Start()
-    {
-        _mob = transform.parent.GetComponent<MobCAC>();
+    void Start() {
+        _mob = transform.parent.GetComponent<MobDistance>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (Time.time >= _mob.nextAttackTime) {
             if (_isTouchingPlayer) {
                 Attack();

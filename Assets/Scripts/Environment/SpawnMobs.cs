@@ -5,7 +5,9 @@ using UnityEngine;
 public class SpawnMobs : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _mobPrefab;
+    private GameObject _mobCacPrefab;
+    [SerializeField]
+    private GameObject _mobDistPrefab;
     [SerializeField]
     private int _nbMobToSpawn = 5;
     [SerializeField]
@@ -16,6 +18,11 @@ public class SpawnMobs : MonoBehaviour
     [SerializeField]
     private float _timeToSub = 0.5f;
     private float _actualTimeToSpawn;
+
+    [SerializeField]
+    private float _ratioSpawnCac = 100f;
+    [SerializeField]
+    private float _deltaSpawn = 20f;
     
     private Transform[] _spawnPositions;
     private Transform _actualZoneTransform;
@@ -44,14 +51,15 @@ public class SpawnMobs : MonoBehaviour
         }
     }
 
-    IEnumerator Spawn() {
+    public IEnumerator Spawn() {
         _isSpawning = true;
 
         for (int i = 0; i < _actualNbMobToSpawn; i++) {
             int indexPos = Random.Range(0, _actualZoneTransform.childCount);
+
             yield return new WaitForSeconds(_actualTimeToSpawn);
             Instantiate(
-                _mobPrefab, 
+                ChooseRandomPrefab(),
                 _spawnPositions[indexPos].position, 
                 Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
         }
@@ -68,6 +76,10 @@ public class SpawnMobs : MonoBehaviour
             
             _actualNbMobToSpawn += _nbMobToAdd;
             _actualTimeToSpawn -= _timeToSub;
+            _ratioSpawnCac -= _deltaSpawn;
+            if (_ratioSpawnCac < 20f) {
+                _ratioSpawnCac = 20f;
+            }
 
             UpdateSpawnPos();
         }
@@ -85,6 +97,16 @@ public class SpawnMobs : MonoBehaviour
                 _spawnPositions[i] = t;
                 i++;
             }
+        }
+    }
+
+    private GameObject ChooseRandomPrefab() {
+        float nb = Random.Range(0f, 100f);
+        Debug.Log("nb = " + nb);
+        if (nb <= _ratioSpawnCac) {
+            return _mobCacPrefab;
+        } else {
+            return _mobDistPrefab;
         }
     }
 }

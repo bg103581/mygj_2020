@@ -39,6 +39,7 @@ public class ShrinkingZone : MonoBehaviour
 
     private void Shrink() {
         _isShrinking = true;
+
         DOTween.To(
             ()=>transform.localScale, 
             x=> transform.localScale = x, 

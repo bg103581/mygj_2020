@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Camera cam;
+
     private CharacterController _controller;
 
     [SerializeField]
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         _controller = GetComponent<CharacterController>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -51,5 +54,26 @@ public class PlayerMovement : MonoBehaviour
         _velocity.y += _gravity * Time.deltaTime;
 
         _controller.Move(_velocity * Time.deltaTime);
+
+        //RaycastClickedObject();
     }
+
+    #region ROCHE
+
+   /*public void RaycastClickedObject() {
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit)) {
+
+                // Check if we hit an interactable
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                
+                Debug.Log("We hit " + hit.collider.name);
+            }
+        }
+    }*/
+
+    #endregion
 }

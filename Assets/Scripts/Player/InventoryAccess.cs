@@ -7,6 +7,7 @@ public class InventoryAccess : MonoBehaviour
 {
     #region VARIABLES
     public GameObject InventoryCanvas;
+    public GameObject CraftCanvas;
     public GameObject GameCamera;
     
     [SerializeField]
@@ -22,6 +23,7 @@ public class InventoryAccess : MonoBehaviour
         }
 
         InventoryCanvas.SetActive(false);
+        CraftCanvas.SetActive(false);
     }
 
     #endregion
@@ -40,6 +42,7 @@ public class InventoryAccess : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I)) {
                 GameCamera.GetComponent<MouseLook>().enabled = true;
                 InventoryCanvas.SetActive(false);
+                CraftCanvas.SetActive(false);
             }
 
             Cursor.visible = true;
@@ -49,6 +52,7 @@ public class InventoryAccess : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I)) {
                 GameCamera.GetComponent<MouseLook>().enabled = false;
                 InventoryCanvas.SetActive(true);
+                CraftCanvas.SetActive(true);
             }
 
             Cursor.visible = false;

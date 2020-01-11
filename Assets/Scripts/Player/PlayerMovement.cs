@@ -54,12 +54,11 @@ public class PlayerMovement : MonoBehaviour
         _velocity.y += _gravity * Time.deltaTime;
 
         _controller.Move(_velocity * Time.deltaTime);
-
-        //RaycastClickedObject();
+        
     }
 
     #region ROCHE
-
+    
    /*public void RaycastClickedObject() {
         if (Input.GetMouseButtonDown(1)) {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);

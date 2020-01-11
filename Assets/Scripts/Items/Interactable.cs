@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     #region VARIABLES
+    public Item item;
     public float radius = 3f;
     #endregion
 
@@ -17,7 +18,19 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            Destroy(gameObject);
+            //Debug.Log(item.name + " picked.");
+            // Check object type
+            // Increment object type in gamemanager
+            // Add to inventory
+            // Update object type count
+            bool wasPickedUp = Inventory.Instance.AddItem(item);
+            
+            if (wasPickedUp) {
+                item.itemCount++;
+                Destroy(gameObject);
+
+                Debug.Log(item.itemCount + " " + item.name);
+            }
         }
     }
 

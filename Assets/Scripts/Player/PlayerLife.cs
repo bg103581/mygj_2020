@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour {
     #region VARIABLES
 
+    [SerializeField]
     private GameManager _gameManager;
 
     //public int DamageReceivedCAC;
@@ -38,8 +39,15 @@ public class PlayerLife : MonoBehaviour {
     }
 
     public void TakeDamage(int DamageReceived) {
-        _gameManager.SubstractHealth(DamageReceived);
-        Debug.Log(_gameManager.Health);
+        if (_gameManager != null) {
+            _gameManager.SubstractHealth(DamageReceived);
+            Debug.Log(_gameManager.Health);
+        }
+        else {
+            _gameManager = GameObject.FindObjectOfType<GameManager>();
+            Debug.Log("gamemanager is null");
+        }
+        
         // else if (Input.GetKeyDown(KeyCode.D)) {
         //    _gameManager.SubstractHealth(DamageReceivedDISTANCE);
         //    Debug.Log(_gameManager.Health);

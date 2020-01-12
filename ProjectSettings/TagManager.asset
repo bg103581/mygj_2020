@@ -8,6 +8,7 @@ TagManager:
   - EnemyCac
   - EnemyDistance
   - MobDistanceHitBox
+  - Zone
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4519282631701236}
   - component: {fileID: 33127526743645708}
   - component: {fileID: 23102150001078294}
+  - component: {fileID: 4466470462887279402}
+  - component: {fileID: 6509518014593485246}
   m_Layer: 0
   m_Name: rpgpp_lt_building_05
   m_TagString: Untagged
@@ -78,3 +80,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4466470462887279402
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121113006719782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.4598646, y: 3.9749327, z: 3.246889}
+  m_Center: {x: 0.017695427, y: 1.587467, z: -0.7261019}
+--- !u!65 &6509518014593485246
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121113006719782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2372653, y: 4.070986, z: 1.6369138}
+  m_Center: {x: -0.70465505, y: 1.6354935, z: 1.513272}

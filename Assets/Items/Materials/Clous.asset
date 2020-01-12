@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39fe8c6098921f04e89e01d42ec57b41, type: 3}
-  m_Name: Batterie
+  m_Name: Clous
   m_EditorClassIdentifier: 
-  name: Batterie
-  icon: {fileID: 0}
-  isInInventory: 1
-  itemCount: 1
+  name: Clous
+  icon: {fileID: 21300000, guid: 773b237b41c3dde4a937aa8b0345be9e, type: 3}
+  isInInventory: 0
+  itemCount: 0
   isInCraft: 0
   craftCount: 0

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39fe8c6098921f04e89e01d42ec57b41, type: 3}
-  m_Name: Vodka
+  m_Name: JourNuit
   m_EditorClassIdentifier: 
-  name: Vodka
-  icon: {fileID: 0}
-  isInInventory: 1
-  itemCount: 1
+  name: JourNuit
+  icon: {fileID: 21300000, guid: 2817b61298fcdca43b560fa9f50c0465, type: 3}
+  isInInventory: 0
+  itemCount: 0
   isInCraft: 0
   craftCount: 0

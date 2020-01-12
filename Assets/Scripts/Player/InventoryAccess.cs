@@ -61,7 +61,7 @@ public class InventoryAccess : MonoBehaviour
                 GameCamera.GetComponent<MouseLook>().enabled = true;
                 InventoryCanvas.SetActive(false);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < Inventory.Instance.ItemList.Count; i++) {
                     ClearCraftSlot(i);
                 }
 
@@ -86,13 +86,19 @@ public class InventoryAccess : MonoBehaviour
 
     private void ClearCraftSlot(int i) {
         if (i < Inventory.Instance.ItemList.Count) {
-            if (Inventory.Instance.ItemList[i].craftCount > 0) {
-                Inventory.Instance.ItemList[i].isInCraft = false;
-                Inventory.Instance.ItemList[i].itemCount += Inventory.Instance.ItemList[i].craftCount;
-                Inventory.Instance.ItemList[i].craftCount = 0;
+            if (Inventory.Instance.ItemList[i].isInCraft) {
+                if (Inventory.Instance.ItemList[i].craftCount > 0) {
+                    Inventory.Instance.ItemList[i].isInCraft = false;
+                    Inventory.Instance.ItemList[i].itemCount += Inventory.Instance.ItemList[i].craftCount;
+                    Inventory.Instance.ItemList[i].craftCount = 0;
+                }
+            }
+
+            if (i < CraftSlotList.Count) {
                 CraftSlotList[i].text = "";
                 CraftSlotList[i].gameObject.GetComponentInParent<InventorySlot>().ClearSlot();
             }
+            
         }
         
     }

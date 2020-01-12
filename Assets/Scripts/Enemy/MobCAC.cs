@@ -10,7 +10,7 @@ public class MobCAC : MonoBehaviour
     public float nextAttackTime = 0f;
 
     public float maxHealth = 20f;
-    private float currentHealth;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,8 @@ public class MobCAC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentHealth <= 0f) {
+            Destroy(gameObject);
+        }
     }
 }

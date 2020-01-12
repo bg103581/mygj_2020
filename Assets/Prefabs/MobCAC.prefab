@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1658309424}
   m_Layer: 0
   m_Name: MobCAC
-  m_TagString: Untagged
+  m_TagString: EnemyCac
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,8 @@ MonoBehaviour:
   damage: 5
   attackRate: 1
   nextAttackTime: 0
-  maxHealth: 20
+  maxHealth: 100
+  currentHealth: 100
 --- !u!1 &7928100177104259668
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ GameObject:
   - component: {fileID: 2425600499956038033}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: EnemyCac
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

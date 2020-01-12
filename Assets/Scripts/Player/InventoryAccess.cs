@@ -9,7 +9,9 @@ public class InventoryAccess : MonoBehaviour
     public GameObject InventoryCanvas;
     public GameObject CraftCanvas;
     public GameObject GameCanvas;
-    public GameObject GameCamera;
+
+    private GameObject GameCamera;
+    private GameObject player;
     
     [SerializeField]
     private List<TextMeshProUGUI> SlotList = new List<TextMeshProUGUI>();
@@ -31,6 +33,11 @@ public class InventoryAccess : MonoBehaviour
 
         InventoryCanvas.SetActive(false);
         CraftCanvas.SetActive(false);
+    }
+
+    private void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        GameCamera = player.transform.Find("MainCamera").gameObject;
     }
 
     #endregion

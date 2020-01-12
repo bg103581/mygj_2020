@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MobDistance : MonoBehaviour
 {
-    public float damage = 5f;
+    public int damage = 5;
     public float attackRate = 2f;
     [HideInInspector]
     public float nextAttackTime = 0f;
@@ -13,6 +13,7 @@ public class MobDistance : MonoBehaviour
     public float attackRateDistance = 1.5f;
     [HideInInspector]
     public float nextAttackTimeDistance = 0f;
+    public float bulletSpeed = 10f;
 
     public float maxHealth = 20f;
     public float currentHealth;

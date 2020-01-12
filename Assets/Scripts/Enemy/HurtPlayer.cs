@@ -7,11 +7,14 @@ public class HurtPlayer : MonoBehaviour
     [SerializeField]
     private bool _isTouchingPlayer;
 
+    private PlayerLife _playerLife;
+
     private MobCAC _mob;
     // Start is called before the first frame update
     void Start()
     {
         _mob = transform.parent.GetComponent<MobCAC>();
+        _playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class HurtPlayer : MonoBehaviour
     }
 
     private void Attack() {
-        //Debug.Log("hurt player");
+        _playerLife.TakeDamage(_mob.damage);
     }
 
     private void OnTriggerEnter(Collider other) {

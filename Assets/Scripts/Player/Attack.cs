@@ -18,7 +18,6 @@ public class Attack : MonoBehaviour {
     private void LaunchAttack() {
         if (weaponInHand.isCac) {
             if (Input.GetMouseButtonDown(0)) {
-                Debug.Log("nik");
                 Swing();
                 weaponInHand.nextAttackTime = Time.time + 1f / weaponInHand.attackRate;
             }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8254549188364550570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 8254549188860306492}
   - component: {fileID: 8254549188860306490}
   - component: {fileID: 8254549188860306493}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponDstance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8254549189908401243}
   - component: {fileID: 8254549189908401241}
   - component: {fileID: 8254549189908401240}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

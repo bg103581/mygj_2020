@@ -7,10 +7,13 @@ public class HurtPlayerDistance : MonoBehaviour
     [SerializeField]
     private bool _isTouchingPlayer;
 
+    private PlayerLife _playerLife;
+
     private MobDistance _mob;
     // Start is called before the first frame update
     void Start() {
         _mob = transform.parent.GetComponent<MobDistance>();
+        _playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class HurtPlayerDistance : MonoBehaviour
     }
 
     private void Attack() {
-        //Debug.Log("hurt player");
+        _playerLife.TakeDamage(_mob.damage);
     }
 
     private void OnTriggerEnter(Collider other) {

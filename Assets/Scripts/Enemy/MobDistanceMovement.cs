@@ -5,9 +5,14 @@ using UnityEngine.AI;
 
 public class MobDistanceMovement : MonoBehaviour
 {
-    private Transform target;//Drag&drop the object to reach
+    private Transform target;
     private NavMeshAgent agent;
     private MobDistance _mob;
+
+    [SerializeField]
+    private GameObject _enemyBullet;
+    [SerializeField]
+    private Transform _firePoint;
 
     [SerializeField]
     private float _maxRange = 10f;
@@ -18,6 +23,9 @@ public class MobDistanceMovement : MonoBehaviour
     
     private bool _isAtPlayerRange;
     private bool _hasPlayerLineVision;
+    
+    private bool isVisionBlocked;
+    private bool playerInFOV;
 
     // Use this for initialization
     void Start() {
@@ -35,14 +43,14 @@ public class MobDistanceMovement : MonoBehaviour
             move();
         }
 
-        _isAtPlayerRange = Vector3.Distance(transform.position, target.position) <= _maxRange;
+        _isAtPlayerRange = Vector3.Distance(transform.position, target.transform.position) <= _maxRange;
         _hasPlayerLineVision = CheckPlayerInFOV();
     }
 
     private void move() {
         if (target != null) { //Clean coding
             agent.isStopped = false;
-            //Debug.DrawLine(transform.position, target.transform.position, Color.blue);
+            Debug.DrawLine(transform.position, target.transform.position, Color.blue);
             agent.SetDestination(target.transform.position);
         }
     }
@@ -54,15 +62,22 @@ public class MobDistanceMovement : MonoBehaviour
         if (Time.time >= _mob.nextAttackTimeDistance) {
             //launch projectile
             Debug.Log("shoot");
+            LaunchBullet();
             _mob.nextAttackTimeDistance = Time.time + 1f / _mob.attackRateDistance;
         }
     }
 
-    private bool CheckPlayerInFOV() {
-        Vector3 targetDirection = target.position - transform.position;
-        bool playerInFOV = Vector3.Angle(transform.TransformDirection(Vector3.forward), targetDirection) <= _fieldOfVision;
+    private void LaunchBullet() {
+        GameObject bullet = Instantiate(_enemyBullet, _firePoint.position, _firePoint.rotation);
+        Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
+        rbBullet.AddForce(_firePoint.forward * _mob.bulletSpeed, ForceMode.Impulse);
+    }
 
-        bool isVisionBlocked;
+    private bool CheckPlayerInFOV() {
+        Vector3 targetDirection = target.transform.position - transform.position;
+        playerInFOV = Vector3.Angle(transform.TransformDirection(Vector3.forward), targetDirection) <= _fieldOfVision;
+
+        //isVisionBlocked;
 
         // Bit shift the index of the layer (8) to get a bit mask
         int layerMask = 1 << _playerMask;
@@ -73,12 +88,12 @@ public class MobDistanceMovement : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, targetDirection, out hit, Mathf.Infinity, _playerMask)) {
+        if (Physics.Raycast(_firePoint.position, targetDirection, out hit, Mathf.Infinity, _playerMask)) {
             isVisionBlocked = true;
-            //Debug.DrawRay(transform.position, targetDirection * hit.distance, Color.red);
+            //Debug.DrawRay(_firePoint.position, targetDirection * hit.distance, Color.red);
         } else {
             isVisionBlocked = false;
-            //Debug.DrawRay(transform.position, targetDirection * 1000, Color.white);
+            //Debug.DrawRay(_firePoint.position, targetDirection * 1000, Color.white);
         }
         return playerInFOV && !isVisionBlocked;
     }

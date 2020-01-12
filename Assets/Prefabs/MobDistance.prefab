@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 166246322188200588}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: MobDistanceHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &166246322188200588
 MonoBehaviour:
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1776036959775746012}
   m_Layer: 0
-  m_Name: ShootPos
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776036959775746015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.55}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1428285517784853515}
@@ -175,6 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9363d333ac952a42b5fdba3fac37f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyBullet: {fileID: 5768291594633916920, guid: 8442cd246138de846846a25e73497745,
+    type: 3}
+  _firePoint: {fileID: 1776036959775746012}
   _maxRange: 20
   _fieldOfVision: 20
   _playerMask: 9
@@ -196,6 +199,7 @@ MonoBehaviour:
   damageDistance: 10
   attackRateDistance: 1.5
   nextAttackTimeDistance: 0
+  bulletSpeed: 20
   maxHealth: 100
   currentHealth: 0
 --- !u!1 &7658651749142158450

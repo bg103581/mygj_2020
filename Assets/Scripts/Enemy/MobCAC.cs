@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MobCAC : MonoBehaviour
 {
-    public float damage = 5f;
+    public int damage = 5;
     public float attackRate = 2f;
     [HideInInspector]
     public float nextAttackTime = 0f;

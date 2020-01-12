@@ -75,21 +75,18 @@ public class ShrinkingZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            Debug.Log("in zone");
             _playerIsOutOfZone = false;
         }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.tag == "Player") {
-            Debug.Log("in zone");
             _playerIsOutOfZone = false;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Player") {
-            Debug.Log("out of zone");
             _playerIsOutOfZone = true;
         }
     }

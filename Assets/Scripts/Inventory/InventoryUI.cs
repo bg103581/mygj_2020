@@ -17,6 +17,7 @@ public class InventoryUI : MonoBehaviour
     public Transform weaponPos;
     public GameObject weaponPrefab;
     public Transform weaponParent;
+    private Attack _attack;
 
     private int craftCount = 0;
     private List<TextMeshProUGUI> CraftSlotList = new List<TextMeshProUGUI>();
@@ -47,6 +48,7 @@ public class InventoryUI : MonoBehaviour
         craftSlot = CraftParent.GetComponentInChildren<InventorySlot>();
 
         weaponPos = GameObject.FindGameObjectWithTag("Player").transform.Find("MainCamera").Find("PivotWeapon").Find("GunPosition");
+        _attack = GameObject.FindGameObjectWithTag("Player").transform.Find("MainCamera").GetComponent<Attack>();
     }
 
     public void UpdateUI() {
@@ -176,6 +178,7 @@ public class InventoryUI : MonoBehaviour
                 weaponPrefab = Inventory.Instance.weapons[j];
                 GameObject weapon = Instantiate(weaponPrefab, weaponPos.position, weaponPos.rotation);
                 weapon.transform.SetParent(weaponPos);
+                _attack.weaponInHand = weapon.GetComponent<Weapon>();
                 PlayerSpawnPos.GetComponent<InventoryAccess>().substract = true;
                 return;
             }

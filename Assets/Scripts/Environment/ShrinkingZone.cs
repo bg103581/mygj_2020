@@ -21,6 +21,16 @@ public class ShrinkingZone : MonoBehaviour
     private float _sizeShrink;
     private float _actualSize;
 
+    private bool _playerIsOutOfZone;
+
+    [SerializeField]
+    private int _damageZone = 5;
+    [SerializeField]
+    private float _attackRate = 1f;
+    private float _nextAttackTime = 0f;
+    [SerializeField]
+    private PlayerLife _playerLife;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +39,15 @@ public class ShrinkingZone : MonoBehaviour
         _actualSize = _startRadius;
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.A)) {
-    //        Shrink();
-    //    }
-    //}
+    //Update is called once per frame
+    void Update() {
+        if (Time.time >= _nextAttackTime) {
+            if (_playerIsOutOfZone) {
+                DamagePlayer();
+                _nextAttackTime = Time.time + 1f / _attackRate;
+            }
+        }
+    }
 
     public void Shrink() {
         if (!_isShrinking && nbShrink != 0) {
@@ -55,5 +67,30 @@ public class ShrinkingZone : MonoBehaviour
         _isShrinking = false;
         nbShrink--;
         _actualSize -= _sizeShrink;
+    }
+
+    private void DamagePlayer() {
+        _playerLife.TakeDamage(_damageZone);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
+            Debug.Log("in zone");
+            _playerIsOutOfZone = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "Player") {
+            Debug.Log("in zone");
+            _playerIsOutOfZone = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            Debug.Log("out of zone");
+            _playerIsOutOfZone = true;
+        }
     }
 }

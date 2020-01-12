@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39fe8c6098921f04e89e01d42ec57b41, type: 3}
-  m_Name: Bouteille
+  m_Name: Conserve
   m_EditorClassIdentifier: 
-  name: Bouteille
-  icon: {fileID: 0}
+  name: Conserve
+  icon: {fileID: 21300000, guid: e991edf400a53294ba51bf9a7b23b53b, type: 3}
   isInInventory: 0
   itemCount: 1
   isInCraft: 0

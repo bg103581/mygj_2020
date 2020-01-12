@@ -7,7 +7,7 @@ public class GameManager : GenericSingleton<GameManager>
     #region VARIABLES
 
     private int _health;
-
+    
     #endregion
 
     #region AWAKE

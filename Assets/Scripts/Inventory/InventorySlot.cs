@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     public Transform ItemCount;
 
-    public Item item; // Keep track of current item in the slot
+    public Item item = null; // Keep track of current item in the slot
     #endregion
 
     #region METHODS

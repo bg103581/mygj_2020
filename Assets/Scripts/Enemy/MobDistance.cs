@@ -18,9 +18,12 @@ public class MobDistance : MonoBehaviour
     public float maxHealth = 20f;
     public float currentHealth;
 
+    private GameManager _gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        _gameManager.actualNbMobs += 1;
         currentHealth = maxHealth;
     }
 
@@ -28,6 +31,8 @@ public class MobDistance : MonoBehaviour
     void Update()
     {
         if (currentHealth <= 0f) {
+            _gameManager.actualNbMobs -= 1;
+            _gameManager.score += 7;
             Destroy(gameObject);
         }
     }

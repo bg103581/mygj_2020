@@ -19,6 +19,9 @@ public class GameManager : GenericSingleton<GameManager>
     private GameObject _spawnMobsGO;
     private SpawnMobs _spawnMobs;
 
+    public int actualNbMobs;
+    public int score;
+
     #endregion
 
     #region AWAKE

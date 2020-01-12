@@ -8,10 +8,13 @@ public class InventoryAccess : MonoBehaviour
     #region VARIABLES
     public GameObject InventoryCanvas;
     public GameObject CraftCanvas;
+    public GameObject GameCanvas;
     public GameObject GameCamera;
     
     [SerializeField]
     private List<TextMeshProUGUI> SlotList = new List<TextMeshProUGUI>();
+    [SerializeField]
+    private List<TextMeshProUGUI> CraftSlotList = new List<TextMeshProUGUI>();
     #endregion
 
     #region AWAKE
@@ -20,6 +23,10 @@ public class InventoryAccess : MonoBehaviour
         
         foreach (Transform transform in InventoryCanvas.transform.Find("MaterialsParent").GetComponentInChildren<Transform>()) {
             SlotList.Add(transform.Find("ItemCount").GetComponent<TextMeshProUGUI>());
+        }
+
+        foreach (Transform transform in CraftCanvas.transform.Find("MaterialsParent").GetComponentInChildren<Transform>()) {
+            CraftSlotList.Add(transform.Find("ItemCount").GetComponent<TextMeshProUGUI>());
         }
 
         InventoryCanvas.SetActive(false);
@@ -35,13 +42,22 @@ public class InventoryAccess : MonoBehaviour
 
             for (int i = 0; i < Inventory.Instance.ItemList.Count; i++) {
                 if (Inventory.Instance.ItemList[i] != null) {
-                    SlotList[i].text = Inventory.Instance.ItemList[i].itemCount.ToString();
+                    if (Inventory.Instance.ItemList[i].itemCount > 0) {
+                        SlotList[i].text = Inventory.Instance.ItemList[i].itemCount.ToString();
+                    } else {
+                        SlotList[i].text = "";
+                    }
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.I)) {
                 GameCamera.GetComponent<MouseLook>().enabled = true;
                 InventoryCanvas.SetActive(false);
+
+                for (int i = 0; i < 3; i++) {
+                    ClearCraftSlot(i);
+                }
+
                 CraftCanvas.SetActive(false);
             }
 
@@ -53,10 +69,25 @@ public class InventoryAccess : MonoBehaviour
                 GameCamera.GetComponent<MouseLook>().enabled = false;
                 InventoryCanvas.SetActive(true);
                 CraftCanvas.SetActive(true);
+
+                GameCanvas.GetComponent<InventoryUI>().UpdateUI();
             }
 
             Cursor.visible = false;
         }
+    }
+
+    private void ClearCraftSlot(int i) {
+        if (i < Inventory.Instance.ItemList.Count) {
+            if (Inventory.Instance.ItemList[i].craftCount > 0) {
+                Inventory.Instance.ItemList[i].isInCraft = false;
+                Inventory.Instance.ItemList[i].itemCount += Inventory.Instance.ItemList[i].craftCount;
+                Inventory.Instance.ItemList[i].craftCount = 0;
+                CraftSlotList[i].text = "";
+                CraftSlotList[i].gameObject.GetComponentInParent<InventorySlot>().ClearSlot();
+            }
+        }
+        
     }
 
     #endregion

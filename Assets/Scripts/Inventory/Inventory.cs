@@ -25,14 +25,20 @@ public class Inventory : GenericSingleton<Inventory>
         }
 
         if (!item.isInInventory) {
-            ItemList.Add(item);
+
+            if (!ItemList.Contains(item)) {
+                ItemList.Add(item);
+            }
+
             item.isInInventory = true;
         }
+
+        item.itemCount++;
 
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke(); // Trigger OnItemChanged event
         }
-
+        
         return true;
     }
 

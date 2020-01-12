@@ -10,6 +10,9 @@ public class ItemInit : MonoBehaviour
         foreach (Item item in Items) {
             item.isInInventory = false;
             item.itemCount = 0;
+
+            item.isInCraft = false;
+            item.craftCount = 0;
         }
     }
 }

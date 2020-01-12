@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
             bool wasPickedUp = Inventory.Instance.AddItem(item);
             
             if (wasPickedUp) {
-                item.itemCount++;
+                //item.itemCount++;
                 Destroy(gameObject);
 
                 Debug.Log(item.itemCount + " " + item.name);

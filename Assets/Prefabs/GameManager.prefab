@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a3972a79903b5409f08058b6454380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startTimer: 0
+  _vagueTimer: 0
+  _shrinkingZone: {fileID: 0}
+  _spawnMobsGO: {fileID: 0}
 --- !u!114 &5657027243278314353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +63,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemList: []
   MaxInventorySpace: 20
+  weapons:
+  - {fileID: 6778434310774724895, guid: 4b423d944929fc24a9a8e26204b88679, type: 3}
+  - {fileID: 6548018376242946086, guid: b2e13513bf3c06e4a9a9fff9e885ca3e, type: 3}
+  - {fileID: 2082417642435743901, guid: 486831aa92e44fa419550fd63c680fa6, type: 3}
+  - {fileID: 5493356487601229693, guid: c4f05856152e8154db61f76fc715c4ee, type: 3}
+  - {fileID: 0}
+  - {fileID: 5631515260983809244, guid: 36e5b4661621c734583ec0e1ce01737b, type: 3}
+  - {fileID: 288378773880754000, guid: fae872fe802c654498cf753349c7f1cc, type: 3}
+  - {fileID: 2929523499657313474, guid: af41b11cd9eb74b48a6fe797ea64e70b, type: 3}
+  - {fileID: 7175695126591444296, guid: a05ef0119bd9ec640b36e503dc0c19c7, type: 3}
+  - {fileID: 0}
+  - {fileID: 2317797570385614582, guid: 984a6d2d7a980bf4fb56f73b536d6443, type: 3}
+  - {fileID: 3016561238149080514, guid: 308d670868074f849bca4aaae43b46cc, type: 3}
+  - {fileID: 7126748359489348017, guid: d67cc209a70f1c64a8ae0c0bceacabe6, type: 3}
+  - {fileID: 7999392431627520290, guid: 47cd44107b0bff64ebe98bc3a1e2628a, type: 3}
+  - {fileID: 5178661202955784222, guid: 328ff49256b4366478873b63d0ea08af, type: 3}
+  - {fileID: 5828578917321604562, guid: 88493e5207c14e54298b0898adda745a, type: 3}
 --- !u!114 &5657027243278314354
 MonoBehaviour:
   m_ObjectHideFlags: 0

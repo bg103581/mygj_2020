@@ -9,9 +9,12 @@ public class InventoryAccess : MonoBehaviour
     public GameObject InventoryCanvas;
     public GameObject CraftCanvas;
     public GameObject GameCanvas;
+    public GameObject notCraftable;
 
     private GameObject GameCamera;
     private GameObject player;
+
+    public bool substract = false;
     
     [SerializeField]
     private List<TextMeshProUGUI> SlotList = new List<TextMeshProUGUI>();
@@ -65,8 +68,11 @@ public class InventoryAccess : MonoBehaviour
                     ClearCraftSlot(i);
                 }
 
+                notCraftable.SetActive(false);
                 CraftCanvas.SetActive(false);
             }
+
+            
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -89,7 +95,9 @@ public class InventoryAccess : MonoBehaviour
             if (Inventory.Instance.ItemList[i].isInCraft) {
                 if (Inventory.Instance.ItemList[i].craftCount > 0) {
                     Inventory.Instance.ItemList[i].isInCraft = false;
-                    Inventory.Instance.ItemList[i].itemCount += Inventory.Instance.ItemList[i].craftCount;
+                    if (!substract) {
+                        Inventory.Instance.ItemList[i].itemCount += Inventory.Instance.ItemList[i].craftCount;
+                    }
                     Inventory.Instance.ItemList[i].craftCount = 0;
                 }
             }

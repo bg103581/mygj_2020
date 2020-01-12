@@ -11,6 +11,8 @@ public class InventoryUI : MonoBehaviour
     public Transform CraftMaterialsParent;
     public Transform CraftParent;
     public GameObject CraftCanvas;
+    public GameObject NotCraftableText;
+    public GameObject PlayerSpawnPos;
 
     public Transform weaponPos;
     public GameObject weaponPrefab;
@@ -29,6 +31,8 @@ public class InventoryUI : MonoBehaviour
     #region METHODS
 
     private void Awake() {
+
+        NotCraftableText.SetActive(false);
         foreach (Transform transform in CraftCanvas.transform.Find("MaterialsParent").GetComponentInChildren<Transform>()) {
             CraftSlotList.Add(transform.Find("ItemCount").GetComponent<TextMeshProUGUI>());
         }
@@ -159,6 +163,10 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
+        if (itemNames == null) {
+            return;
+        }
+
         string[] nameCombo = new string[3];
         for (int j = 0; j < 16; j++) {
             for (int k = 0; k < 3; k++) {
@@ -166,10 +174,16 @@ public class InventoryUI : MonoBehaviour
             }
             if (compareArray<string>(itemNames, nameCombo)) {
                 weaponPrefab = Inventory.Instance.weapons[j];
-                Instantiate(weaponPrefab, weaponPos.position, weaponPos.rotation);
-                weaponPrefab.transform.SetParent(weaponPos);
+                GameObject weapon = Instantiate(weaponPrefab, weaponPos.position, weaponPos.rotation);
+                weapon.transform.SetParent(weaponPos);
+                PlayerSpawnPos.GetComponent<InventoryAccess>().substract = true;
+                return;
             }
+            
         }
+
+        NotCraftableText.SetActive(true);
+        return;
     }
 
     public static bool compareArray<T>(T[] aListA, T[] aListB) {

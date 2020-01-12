@@ -56,7 +56,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5178661202955784222}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.48021555, y: 0.3978455, z: 1.0426054}
@@ -78,7 +78,7 @@ MonoBehaviour:
   attackRate: 1
   nextAttackTime: 0
   isCac: 0
-  bullet: {fileID: 4712557373006895460}
+  bullet: {fileID: 0}
   firePoint: {fileID: 5402199802457371634}
   col: {fileID: 0}
 --- !u!1001 &5262480008122974089
@@ -259,12 +259,6 @@ Transform:
 --- !u!4 &5402199802457371634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 283847407776271483, guid: 47cd44107b0bff64ebe98bc3a1e2628a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5262480008122974089}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4712557373006895460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 607502550731253485, guid: 47cd44107b0bff64ebe98bc3a1e2628a,
     type: 3}
   m_PrefabInstance: {fileID: 5262480008122974089}
   m_PrefabAsset: {fileID: 0}

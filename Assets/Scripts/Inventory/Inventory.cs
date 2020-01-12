@@ -9,7 +9,7 @@ public class Inventory : GenericSingleton<Inventory>
     public int MaxInventorySpace = 20;
     public GameObject[] weapons;
     
-    public string[,] itemCombinations = new string[12, 3];
+    public string[,] itemCombinations = new string[16, 3];
     #endregion
 
     #region DELEGATE

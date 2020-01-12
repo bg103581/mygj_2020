@@ -41,6 +41,8 @@ public class InventoryUI : MonoBehaviour
         materialSlots = MaterialsParent.GetComponentsInChildren<InventorySlot>();
         craftMaterialSlots = CraftMaterialsParent.GetComponentsInChildren<InventorySlot>();
         craftSlot = CraftParent.GetComponentInChildren<InventorySlot>();
+
+        weaponPos = GameObject.FindGameObjectWithTag("Player").transform.Find("MainCamera").Find("PivotWeapon").Find("GunPosition");
     }
 
     public void UpdateUI() {
@@ -69,23 +71,33 @@ public class InventoryUI : MonoBehaviour
             if (parent.GetComponent<InventorySlot>().item.itemCount > 0) {
                 
                 for (int i = 0; i < craftMaterialSlots.Length; i++) {
-                    if (parent.GetComponent<InventorySlot>().item.isInCraft) {
-                        if (craftMaterialSlots[i].item == parent.GetComponent<InventorySlot>().item) {
-                            parent.GetComponent<InventorySlot>().item.itemCount--;
-                            parent.GetComponent<InventorySlot>().item.craftCount++;
-                            CraftSlotList[i].text = parent.GetComponent<InventorySlot>().item.craftCount.ToString();
-                            break;
-                        }
-                    } else {
-                        if (craftMaterialSlots[i].item == null) {
-                            Debug.Log(craftMaterialSlots[i] + " slot IS NULL");
-                            craftMaterialSlots[i].AddToSlot(parent.GetComponent<InventorySlot>().item);
-                            parent.GetComponent<InventorySlot>().item.itemCount--;
-                            parent.GetComponent<InventorySlot>().item.craftCount++;
-                            CraftSlotList[i].text = parent.GetComponent<InventorySlot>().item.craftCount.ToString();
-                            parent.GetComponent<InventorySlot>().item.isInCraft = true;
-                            break;
-                        }
+                    //if (parent.GetComponent<InventorySlot>().item.isInCraft) {
+                    //    if (craftMaterialSlots[i].item == parent.GetComponent<InventorySlot>().item) {
+                    //        parent.GetComponent<InventorySlot>().item.itemCount--;
+                    //        parent.GetComponent<InventorySlot>().item.craftCount++;
+                    //        CraftSlotList[i].text = parent.GetComponent<InventorySlot>().item.craftCount.ToString();
+                    //        break;
+                    //    }
+                    //} else {
+                    //    if (craftMaterialSlots[i].item == null) {
+                    //        Debug.Log(craftMaterialSlots[i] + " slot IS NULL");
+                    //        craftMaterialSlots[i].AddToSlot(parent.GetComponent<InventorySlot>().item);
+                    //        parent.GetComponent<InventorySlot>().item.itemCount--;
+                    //        parent.GetComponent<InventorySlot>().item.craftCount++;
+                    //        CraftSlotList[i].text = parent.GetComponent<InventorySlot>().item.craftCount.ToString();
+                    //        parent.GetComponent<InventorySlot>().item.isInCraft = true;
+                    //        break;
+                    //    }
+                    //}
+
+                    if (craftMaterialSlots[i].item == null) {
+                        Debug.Log(craftMaterialSlots[i] + " slot IS NULL");
+                        craftMaterialSlots[i].AddToSlot(parent.GetComponent<InventorySlot>().item);
+                        parent.GetComponent<InventorySlot>().item.itemCount--;
+                        parent.GetComponent<InventorySlot>().item.craftCount++;
+                        CraftSlotList[i].text = parent.GetComponent<InventorySlot>().item.craftCount.ToString();
+                        parent.GetComponent<InventorySlot>().item.isInCraft = true;
+                        break;
                     }
                 }
 
@@ -137,10 +149,13 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void TryCraft() {
+        itemNames = new string[3];
 
-        for (int i = 0; i < craftMaterialSlots.Length; i++) {
+        for (int i = 0; i < 3; i++) {
             if (craftMaterialSlots[i].item != null) {
+                Debug.Log(craftMaterialSlots[i].item.name);
                 itemNames[i] = craftMaterialSlots[i].item.name;
+                Debug.Log(itemNames[i]);
             }
         }
 
@@ -152,7 +167,7 @@ public class InventoryUI : MonoBehaviour
             if (compareArray<string>(itemNames, nameCombo)) {
                 weaponPrefab = Inventory.Instance.weapons[j];
                 Instantiate(weaponPrefab, weaponPos.position, weaponPos.rotation);
-                weaponPrefab.transform.SetParent(weaponParent);
+                weaponPrefab.transform.SetParent(weaponPos);
             }
         }
     }

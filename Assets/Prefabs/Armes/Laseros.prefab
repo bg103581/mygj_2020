@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3452602939565789591}
   - component: {fileID: 5132654533396946643}
   - component: {fileID: 36883310}
+  - component: {fileID: 5440439232927364709}
   m_Layer: 0
   m_Name: Laseros
   m_TagString: Untagged
@@ -60,6 +61,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48021555, y: 0.3978455, z: 1.0426054}
   m_Center: {x: -0.07242894, y: 0.06816828, z: 0.08947134}
+--- !u!114 &5440439232927364709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178661202955784222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ab303fa693ec04487358ae2d6f84d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 12
+  bulletSpeed: 1
+  attackRate: 1
+  nextAttackTime: 0
+  isCac: 0
+  bullet: {fileID: 4712557373006895460}
+  firePoint: {fileID: 5402199802457371634}
+  col: {fileID: 0}
 --- !u!1001 &5262480008122974089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +253,18 @@ PrefabInstance:
 --- !u!4 &4598240788406037161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8563645328864367904, guid: 47cd44107b0bff64ebe98bc3a1e2628a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5262480008122974089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5402199802457371634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 283847407776271483, guid: 47cd44107b0bff64ebe98bc3a1e2628a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5262480008122974089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4712557373006895460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 607502550731253485, guid: 47cd44107b0bff64ebe98bc3a1e2628a,
     type: 3}
   m_PrefabInstance: {fileID: 5262480008122974089}
   m_PrefabAsset: {fileID: 0}

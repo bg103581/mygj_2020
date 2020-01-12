@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2027731520044214855}
   - component: {fileID: 5483723675596175414}
   - component: {fileID: 848263151}
+  - component: {fileID: 1031813248530602150}
   m_Layer: 0
   m_Name: Chirugie
   m_TagString: Untagged
@@ -59,6 +60,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.38431787, y: 0.5302137, z: 1.1838303}
   m_Center: {x: -0.0014588833, y: -0.021884382, z: -0.29616928}
+--- !u!114 &1031813248530602150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929523499657313474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ab303fa693ec04487358ae2d6f84d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 35
+  bulletSpeed: 1
+  attackRate: 0.29
+  nextAttackTime: 0
+  isCac: 0
+  bullet: {fileID: 6611702034804418063}
+  firePoint: {fileID: 6212368998347515964}
+  col: {fileID: 0}
 --- !u!1001 &624797714454339504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charcute
       objectReference: {fileID: 0}
+    - target: {fileID: 639047061401994473, guid: fae872fe802c654498cf753349c7f1cc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 877566564865524857, guid: fae872fe802c654498cf753349c7f1cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,6 +300,18 @@ PrefabInstance:
 --- !u!4 &5964212305664764076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 877566564865524857, guid: fae872fe802c654498cf753349c7f1cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6838889044600466645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6611702034804418063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 372082028910611162, guid: fae872fe802c654498cf753349c7f1cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6838889044600466645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6212368998347515964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 639047061401994473, guid: fae872fe802c654498cf753349c7f1cc,
     type: 3}
   m_PrefabInstance: {fileID: 6838889044600466645}
   m_PrefabAsset: {fileID: 0}

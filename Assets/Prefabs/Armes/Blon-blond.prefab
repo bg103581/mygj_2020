@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3265251333551007964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4047779315326837337}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4047779315326837337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3265251333551007964}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.073, y: 0.0355, z: -0.0353}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3703681379777081811}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6548018376242946086
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +41,7 @@ GameObject:
   - component: {fileID: 3703681379777081811}
   - component: {fileID: 2014557048570208832}
   - component: {fileID: 497119520}
+  - component: {fileID: 3037006790192864522}
   m_Layer: 0
   m_Name: Blon-blond
   m_TagString: Untagged
@@ -31,6 +62,7 @@ Transform:
   m_Children:
   - {fileID: 3751719530211036415}
   - {fileID: 2649220779512483341}
+  - {fileID: 4047779315326837337}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,6 +92,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.17051506, y: 0.25126088, z: 0.19498253}
   m_Center: {x: -0.037926674, y: -0.05383092, z: -0.025691986}
+--- !u!114 &3037006790192864522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548018376242946086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ab303fa693ec04487358ae2d6f84d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 6
+  bulletSpeed: 1
+  attackRate: 0.67
+  nextAttackTime: 0
+  isCac: 0
+  bullet: {fileID: 100000, guid: 274fdec0feeaa784f96a62f99c4be287, type: 3}
+  firePoint: {fileID: 4047779315326837337}
+  col: {fileID: 0}
 --- !u!1001 &100978739769906352
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6078182815996077807}
   m_Layer: 0
   m_Name: MobDistance
-  m_TagString: Untagged
+  m_TagString: EnemyDistance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +196,8 @@ MonoBehaviour:
   damageDistance: 10
   attackRateDistance: 1.5
   nextAttackTimeDistance: 0
-  maxHealth: 20
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &7658651749142158450
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ GameObject:
   - component: {fileID: 2731376990743146423}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: EnemyDistance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

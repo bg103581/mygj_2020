@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour {
     private Transform _pivotWeapon;
 
     private void Update() {
-        if (Time.time >= weaponInHand.nextAttackTime) {
+        if (weaponInHand != null && Time.time >= weaponInHand.nextAttackTime) {
             LaunchAttack();
         }
     }

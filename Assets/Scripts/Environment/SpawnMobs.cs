@@ -45,46 +45,52 @@ public class SpawnMobs : MonoBehaviour
         UpdateSpawnPos();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && !_isSpawning && !_stopSpawn) {
-            StartCoroutine("Spawn");
-        }
+    //private void Update() {
+    //    if (Input.GetKeyDown(KeyCode.E)) {
+    //        StartCoroutine("SpawnCorout");
+    //    }
+    //}
+
+    public void Spawn() {
+        StartCoroutine("SpawnCorout");
     }
 
-    public IEnumerator Spawn() {
-        _isSpawning = true;
+    public IEnumerator SpawnCorout() {
+        if (!_isSpawning && !_stopSpawn) {
+            _isSpawning = true;
 
-        for (int i = 0; i < _actualNbMobToSpawn; i++) {
-            int indexPos = Random.Range(0, _actualZoneTransform.childCount);
+            for (int i = 0; i < _actualNbMobToSpawn; i++) {
+                int indexPos = Random.Range(0, _actualZoneTransform.childCount);
 
-            yield return new WaitForSeconds(_actualTimeToSpawn);
-            Instantiate(
-                ChooseRandomPrefab(),
-                _spawnPositions[indexPos].position, 
-                Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-        }
-
-        _actualZone++;
-        if (!_stopSpawn) {
-            _stopSpawn = _actualZone > transform.childCount - 1;
-
-            try {
-                _actualZoneTransform = transform.GetChild(_actualZone);
-            } catch (System.Exception) {
-                Debug.Log("nik");
-            }
-            
-            _actualNbMobToSpawn += _nbMobToAdd;
-            _actualTimeToSpawn -= _timeToSub;
-            _ratioSpawnCac -= _deltaSpawn;
-            if (_ratioSpawnCac < 20f) {
-                _ratioSpawnCac = 20f;
+                yield return new WaitForSeconds(_actualTimeToSpawn);
+                Instantiate(
+                    ChooseRandomPrefab(),
+                    _spawnPositions[indexPos].position,
+                    Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
             }
 
-            UpdateSpawnPos();
-        }
+            _actualZone++;
+            if (!_stopSpawn) {
+                _stopSpawn = _actualZone > transform.childCount - 1;
 
-        _isSpawning = false;
+                try {
+                    _actualZoneTransform = transform.GetChild(_actualZone);
+                } catch (System.Exception) {
+                    Debug.Log("nik");
+                }
+
+                _actualNbMobToSpawn += _nbMobToAdd;
+                _actualTimeToSpawn -= _timeToSub;
+                _ratioSpawnCac -= _deltaSpawn;
+                if (_ratioSpawnCac < 20f) {
+                    _ratioSpawnCac = 20f;
+                }
+
+                UpdateSpawnPos();
+            }
+
+            _isSpawning = false;
+        }
     }
 
     private void UpdateSpawnPos() {
@@ -102,7 +108,6 @@ public class SpawnMobs : MonoBehaviour
 
     private GameObject ChooseRandomPrefab() {
         float nb = Random.Range(0f, 100f);
-        Debug.Log("nb = " + nb);
         if (nb <= _ratioSpawnCac) {
             return _mobCacPrefab;
         } else {

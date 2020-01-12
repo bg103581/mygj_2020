@@ -8,6 +8,17 @@ public class GameManager : GenericSingleton<GameManager>
 
     private int _health;
 
+    [SerializeField]
+    private float _startTimer;
+    [SerializeField]
+    private float _vagueTimer;
+    private int _nbVague; // nbShrink = nbVague - 1
+    [SerializeField]
+    private ShrinkingZone _shrinkingZone;
+    [SerializeField]
+    private GameObject _spawnMobsGO;
+    private SpawnMobs _spawnMobs;
+
     #endregion
 
     #region AWAKE
@@ -17,6 +28,10 @@ public class GameManager : GenericSingleton<GameManager>
     }
 
     #endregion
+
+    private void Start() {
+        StartCoroutine("StartGame");
+    }
 
     #region METHODS
 
@@ -33,6 +48,10 @@ public class GameManager : GenericSingleton<GameManager>
     }
 
     public void Init() {
+        _spawnMobs = _spawnMobsGO.GetComponent<SpawnMobs>();
+        _nbVague = _spawnMobsGO.transform.childCount;
+        _shrinkingZone.nbShrink = _nbVague - 1;
+
         Health = 1000;
     }
 
@@ -54,6 +73,20 @@ public class GameManager : GenericSingleton<GameManager>
             if (Health < 0) {
                 Health = 0;
             }
+        }
+    }
+
+    private IEnumerator StartGame() {
+        yield return new WaitForSeconds(_startTimer);
+        //vague de mobs + timer vague
+        _spawnMobs.Spawn();
+        yield return new WaitForSeconds(_vagueTimer);
+
+        //shrink zone + vague + timer jusqu'a la fin
+        for (int i = 0; i < _nbVague - 1; i++) {
+            _shrinkingZone.Shrink();
+            _spawnMobs.Spawn();
+            yield return new WaitForSeconds(_vagueTimer);
         }
     }
 

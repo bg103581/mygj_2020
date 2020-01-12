@@ -11,7 +11,7 @@ public class SpawnPlayer : MonoBehaviour
     private Transform[] _spawnPositions;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //get child transforms
         _spawnPositions = new Transform[transform.childCount];

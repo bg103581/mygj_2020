@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 9a355176d3d51fb4e8c6704f80bcb8ea, type: 2}
-  radius: 0.2
 --- !u!65 &6460476964426042865
 BoxCollider:
   m_ObjectHideFlags: 0
